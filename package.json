@@ -34,9 +34,14 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json && node scripts/post-build.js",
+    "build": "tsc -p tsconfig.json && node scripts/post-build.js && npm run build:api && npm run build:web",
+    "build:api": "cd api && npm run build",
+    "build:web": "cd web && npm run build",
     "dev": "tsx watch src/server.ts",
+    "dev:api": "cd api && npm run dev",
+    "dev:web": "cd web && npm run dev",
     "start": "node dist/server.js",
+    "start:api": "cd api && npm start",
     "prepare": "npm run build",
     "test": "vitest run",
     "test:watch": "vitest",
