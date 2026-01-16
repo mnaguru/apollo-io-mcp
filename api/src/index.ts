@@ -1,5 +1,5 @@
 import "dotenv/config";
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import { createClient } from "@supabase/supabase-js";
@@ -30,7 +30,7 @@ app.use("/api/v1/apollo", apolloRouter);
 app.use("/api/v1/history", historyRouter);
 app.use("/api/v1/saved", savedRouter);
 
-app.get("/health", (req, res) => {
+app.get("/health", (req: Request, res: Response) => {
   res.json({ status: "ok" });
 });
 

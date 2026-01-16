@@ -3,6 +3,10 @@ import { supabase } from "../index.js";
 
 export interface AuthRequest extends Request {
   userId?: string;
+  body: any;
+  params: any;
+  query: any;
+  headers: any;
 }
 
 export async function authMiddleware(

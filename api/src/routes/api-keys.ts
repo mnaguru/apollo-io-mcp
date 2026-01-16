@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, Response } from "express";
 import { supabase } from "../index.js";
 import { authMiddleware, AuthRequest } from "../middleware/auth.js";
 import crypto from "crypto";
@@ -26,7 +26,7 @@ function decrypt(text: string): string {
   return decrypted;
 }
 
-apiKeysRouter.get("/status", authMiddleware, async (req: AuthRequest, res) => {
+apiKeysRouter.get("/status", authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
     const { data } = await supabase
       .from("api_keys")
@@ -41,7 +41,7 @@ apiKeysRouter.get("/status", authMiddleware, async (req: AuthRequest, res) => {
   }
 });
 
-apiKeysRouter.post("/", authMiddleware, async (req: AuthRequest, res) => {
+apiKeysRouter.post("/", authMiddleware, async (req: AuthRequest, res: Response) => {
   try {
     const { apiKey } = req.body;
 

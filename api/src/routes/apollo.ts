@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, Response } from "express";
 import { supabase } from "../index.js";
 import { authMiddleware, AuthRequest } from "../middleware/auth.js";
 import { getUserApiKey } from "./api-keys.js";
@@ -109,7 +109,7 @@ async function saveToHistory(userId: string, toolName: string, queryParams: any,
   }
 }
 
-apolloRouter.post("/search-people", async (req: AuthRequest, res) => {
+apolloRouter.post("/search-people", async (req: AuthRequest, res: Response) => {
   try {
     const apiKey = await getUserApiKey(req.userId!);
     if (!apiKey) {
@@ -127,7 +127,7 @@ apolloRouter.post("/search-people", async (req: AuthRequest, res) => {
   }
 });
 
-apolloRouter.post("/search-companies", async (req: AuthRequest, res) => {
+apolloRouter.post("/search-companies", async (req: AuthRequest, res: Response) => {
   try {
     const apiKey = await getUserApiKey(req.userId!);
     if (!apiKey) {
@@ -145,7 +145,7 @@ apolloRouter.post("/search-companies", async (req: AuthRequest, res) => {
   }
 });
 
-apolloRouter.post("/enrich-person", async (req: AuthRequest, res) => {
+apolloRouter.post("/enrich-person", async (req: AuthRequest, res: Response) => {
   try {
     const apiKey = await getUserApiKey(req.userId!);
     if (!apiKey) {
@@ -163,7 +163,7 @@ apolloRouter.post("/enrich-person", async (req: AuthRequest, res) => {
   }
 });
 
-apolloRouter.post("/enrich-company", async (req: AuthRequest, res) => {
+apolloRouter.post("/enrich-company", async (req: AuthRequest, res: Response) => {
   try {
     const apiKey = await getUserApiKey(req.userId!);
     if (!apiKey) {
@@ -181,7 +181,7 @@ apolloRouter.post("/enrich-company", async (req: AuthRequest, res) => {
   }
 });
 
-apolloRouter.post("/bulk-enrich-people", async (req: AuthRequest, res) => {
+apolloRouter.post("/bulk-enrich-people", async (req: AuthRequest, res: Response) => {
   try {
     const apiKey = await getUserApiKey(req.userId!);
     if (!apiKey) {
@@ -199,7 +199,7 @@ apolloRouter.post("/bulk-enrich-people", async (req: AuthRequest, res) => {
   }
 });
 
-apolloRouter.post("/bulk-enrich-organizations", async (req: AuthRequest, res) => {
+apolloRouter.post("/bulk-enrich-organizations", async (req: AuthRequest, res: Response) => {
   try {
     const apiKey = await getUserApiKey(req.userId!);
     if (!apiKey) {
@@ -217,7 +217,7 @@ apolloRouter.post("/bulk-enrich-organizations", async (req: AuthRequest, res) =>
   }
 });
 
-apolloRouter.get("/organization/:id/jobs", async (req: AuthRequest, res) => {
+apolloRouter.get("/organization/:id/jobs", async (req: AuthRequest, res: Response) => {
   try {
     const apiKey = await getUserApiKey(req.userId!);
     if (!apiKey) {
@@ -235,7 +235,7 @@ apolloRouter.get("/organization/:id/jobs", async (req: AuthRequest, res) => {
   }
 });
 
-apolloRouter.get("/organization/:id", async (req: AuthRequest, res) => {
+apolloRouter.get("/organization/:id", async (req: AuthRequest, res: Response) => {
   try {
     const apiKey = await getUserApiKey(req.userId!);
     if (!apiKey) {
@@ -253,7 +253,7 @@ apolloRouter.get("/organization/:id", async (req: AuthRequest, res) => {
   }
 });
 
-apolloRouter.post("/search-news", async (req: AuthRequest, res) => {
+apolloRouter.post("/search-news", async (req: AuthRequest, res: Response) => {
   try {
     const apiKey = await getUserApiKey(req.userId!);
     if (!apiKey) {

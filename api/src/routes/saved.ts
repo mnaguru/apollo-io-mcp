@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Router, Response } from "express";
 import { supabase } from "../index.js";
 import { authMiddleware, AuthRequest } from "../middleware/auth.js";
 
@@ -6,7 +6,7 @@ export const savedRouter = Router();
 
 savedRouter.use(authMiddleware);
 
-savedRouter.get("/", async (req: AuthRequest, res) => {
+savedRouter.get("/", async (req: AuthRequest, res: Response) => {
   try {
     const resultType = req.query.type as string;
 
@@ -30,7 +30,7 @@ savedRouter.get("/", async (req: AuthRequest, res) => {
   }
 });
 
-savedRouter.post("/", async (req: AuthRequest, res) => {
+savedRouter.post("/", async (req: AuthRequest, res: Response) => {
   try {
     const { resultType, resultData, tags, notes } = req.body;
 
@@ -62,7 +62,7 @@ savedRouter.post("/", async (req: AuthRequest, res) => {
   }
 });
 
-savedRouter.delete("/:id", async (req: AuthRequest, res) => {
+savedRouter.delete("/:id", async (req: AuthRequest, res: Response) => {
   try {
     const { error } = await supabase
       .from("saved_results")
@@ -78,7 +78,7 @@ savedRouter.delete("/:id", async (req: AuthRequest, res) => {
   }
 });
 
-savedRouter.patch("/:id", async (req: AuthRequest, res) => {
+savedRouter.patch("/:id", async (req: AuthRequest, res: Response) => {
   try {
     const { tags, notes } = req.body;
 
