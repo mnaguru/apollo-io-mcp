@@ -36,7 +36,7 @@
   "scripts": {
     "build": "npm run build:mcp && npm run build:api && npm run build:web",
     "build:mcp": "tsc -p tsconfig.json && node scripts/post-build.js",
-    "build:api": "cd api && npm install && npm run build",
+    "build:api": "cd api && rm -rf node_modules && npm install && npm run build",
     "build:web": "cd web && npm install && npm run build",
     "dev": "tsx watch src/server.ts",
     "dev:api": "cd api && npm run dev",
